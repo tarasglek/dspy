@@ -55,7 +55,7 @@ class Retry(Predict):
         kwargs.setdefault("demos", self.demos if self.demos is not None else [])
 
         # perform backtracking
-        if dspy.settings.backtrack_to == self:
+        if dspy.settings.backtrack_to is not None:
             for key, value in dspy.settings.backtrack_to_args.items():
                 kwargs.setdefault(key, value)
             pred = self.forward(**kwargs)
